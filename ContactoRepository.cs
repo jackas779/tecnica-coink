@@ -22,9 +22,9 @@ public class ContactoRepository : IContactoRepository
     var parameters = new DynamicParameters();
     parameters.Add("p_nombre", contacto.Nombre);
     parameters.Add("p_telefono", contacto.Telefono);
-    parameters.Add("p_pais", contacto.Pais);
-    parameters.Add("p_departamento", contacto.Departamento);
-    parameters.Add("p_municipio", contacto.Municipio);
+    parameters.Add("p_id_pais", contacto.IdPais);
+    parameters.Add("p_id_departamento", contacto.IdDepartamento);
+    parameters.Add("p_id_municipio", contacto.IdMunicipio);
     parameters.Add("p_direccion", contacto.Direccion);
     parameters.Add("p_id_generado", dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
 

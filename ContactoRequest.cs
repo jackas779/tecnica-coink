@@ -13,13 +13,13 @@ public class ContactoRequest
   public string Telefono { get; set; } = string.Empty;
 
   [Required(ErrorMessage = "El país es obligatorio.")]
-  public string Pais { get; set; } = string.Empty;
+  public int IdPais { get; set; }
 
   [Required(ErrorMessage = "El departamento es obligatorio.")]
-  public string Departamento { get; set; } = string.Empty;
+  public int IdDepartamento { get; set; }
 
   [Required(ErrorMessage = "El municipio es obligatorio.")]
-  public string Municipio { get; set; } = string.Empty;
+  public int IdMunicipio { get; set; }
 
   [Required(ErrorMessage = "La dirección es obligatoria.")]
   public string Direccion { get; set; } = string.Empty;
