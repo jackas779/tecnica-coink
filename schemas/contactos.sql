@@ -1,0 +1,10 @@
+CREATE TABLE contactos (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    pais VARCHAR(50) NOT NULL,
+    departamento VARCHAR(50) NOT NULL,
+    municipio VARCHAR(50) NOT NULL,
+    direccion VARCHAR(200) NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
