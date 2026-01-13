@@ -120,7 +120,7 @@ Independientemente de la opción elegida, conéctate a la base de datos y ejecut
     *   Puedes acceder a **Swagger UI** en: `http://localhost:<PUERTO>/swagger`
     *   Usa el endpoint `POST /api/contactos` para enviar datos de prueba.
 
-5.  **Ejemplo Json de Prueba **
+5.  **Ejemplo Json de Prueba**
     ```json
     {
       "nombre": "Juan Perez",
