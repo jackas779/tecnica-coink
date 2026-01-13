@@ -1,26 +1,24 @@
-CREATE OR REPLACE FUNCTION sp_registrar_contacto(
-    p_nombre VARCHAR(100),
-    p_telefono VARCHAR(20),
-    p_pais VARCHAR(50),
-    p_departamento VARCHAR(50),
-    p_municipio VARCHAR(50),
-    p_direccion VARCHAR(200)
+CREATE OR REPLACE PROCEDURE public.sp_registrar_contacto(
+    IN p_nombre VARCHAR(100),
+    IN p_telefono VARCHAR(20),
+    IN p_pais VARCHAR(50),
+    IN p_departamento VARCHAR(50),
+    IN p_municipio VARCHAR(50),
+    IN p_direccion VARCHAR(200),
+    INOUT p_id_generado INT DEFAULT NULL 
 )
-RETURNS INT AS $$
-DECLARE
-    v_id_generado INT;
+LANGUAGE plpgsql
+AS $$
 BEGIN
     -- Validar si el teléfono ya existe
-    IF EXISTS (SELECT 1 FROM contactos WHERE telefono = p_telefono) THEN
+    IF EXISTS (SELECT 1 FROM public.contactos WHERE telefono = p_telefono) THEN
         RAISE EXCEPTION 'El teléfono ya se encuentra registrado en el sistema.'
-        USING ERRCODE = 'P0001'; -- Código de error personalizado (User Defined)
+        USING ERRCODE = 'P0001';
     END IF;
 
-    -- Insertar y retornar el ID generado inmediatamente
-    INSERT INTO contactos (nombre, telefono, pais, departamento, municipio, direccion)
+    -- Insertar y asignar el ID 
+    INSERT INTO public.contactos (nombre, telefono, pais, departamento, municipio, direccion)
     VALUES (p_nombre, p_telefono, p_pais, p_departamento, p_municipio, p_direccion)
-    RETURNING id INTO v_id_generado;
-
-    RETURN v_id_generado;
+    RETURNING id INTO p_id_generado;
 END;
-$$ LANGUAGE plpgsql;
+$$;
